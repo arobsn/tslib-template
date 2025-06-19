@@ -1,12 +1,21 @@
 {
-  "name": "ts-lib-template",
+  "name": "@arobsn/tslib-starter",
+  "description": "A modern and minimal TypeScript library template",
+  "author": "Alison Oliveira <arobsn@proton.me>",
+  "license": "MIT",
+  "homepage": "https://github.com/arobsn/tslib-starter#readme",
+  "bugs": {
+    "url": "https://github.com/arobsn/tslib-starter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arobsn/tslib-starter.git"
+  },
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsdown",
     "check": "biome check",
@@ -18,9 +27,23 @@
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
     "@types/bun": "latest",
-    "tsdown": "^0.12.8"
-  },
-  "peerDependencies": {
+    "tsdown": "^0.12.8",
     "typescript": "^5"
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "typescript",
+    "library",
+    "starter",
+    "template",
+    "boilerplate",
+    "tslib",
+    "ts",
+    "es6",
+    "esm",
+    "modern",
+    "minimal"
+  ]
 }
