@@ -21,6 +21,7 @@
     "check": "biome check",
     "fix": "biome check --write",
     "test": "bun test",
+    "coverage": "bun test --coverage",
     "watch:test": "bun test --watch",
     "watch:build": "tsdown --watch"
   },
