@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "check": "biome check",
-    "fix": "biome check --write"
+    "fix": "biome check --write",
+    "test": "bun test",
+    "watch:test": "bun test --watch"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
