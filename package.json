@@ -1,15 +1,15 @@
 {
-  "name": "@arobsn/tslib-starter",
+  "name": "@arobsn/tslib-template",
   "description": "A modern and minimal TypeScript library template",
   "author": "Alison Oliveira <arobsn@proton.me>",
   "license": "MIT",
-  "homepage": "https://github.com/arobsn/tslib-starter#readme",
+  "homepage": "https://github.com/arobsn/tslib-template#readme",
   "bugs": {
-    "url": "https://github.com/arobsn/tslib-starter/issues"
+    "url": "https://github.com/arobsn/tslib-template/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arobsn/tslib-starter.git"
+    "url": "git+https://github.com/arobsn/tslib-template.git"
   },
   "version": "0.0.1",
   "type": "module",
@@ -18,18 +18,21 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsdown",
+    "build:watch": "tsdown --watch",
     "check": "biome check",
     "fix": "biome check --write",
-    "test": "bun test",
-    "coverage": "bun test --coverage",
-    "watch:test": "bun test --watch",
-    "watch:build": "tsdown --watch"
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "coverage": "vitest --run --coverage",
+    "coverage:json": "vitest --run --coverage --reporter=json"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
     "@types/bun": "latest",
+    "@vitest/coverage-istanbul": "^3.2.4",
     "tsdown": "^0.12.8",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   },
   "files": [
     "dist"
