@@ -2,8 +2,8 @@
 
 - [x] tsdown
 - [x] Biome
-- [ ] PNPM
-- [ ] Vitest
+- [x] pnpm
+- [x] Vitest
 - [ ] CI
   - [ ] Node
   - [ ] Bun
