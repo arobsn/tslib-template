@@ -69,18 +69,18 @@ This template supports [npm provenance](https://github.blog/security/supply-chai
 
 [<p align="center"><img width="771" alt="Screenshot 2025-06-21 at 16 36 25" src="https://github.com/user-attachments/assets/63286c78-f63d-4f22-ac1e-143737f36e26" /></p>](https://www.npmjs.com/package/@arobsn/tslib-template#provenance)
 
-**For provenance to work properly, you must:**
+### Requirements
+
+For provenance to work properly, you must:
 
 - Use a **public GitHub repository** (provenance only works for public repos)
 - Ensure your `package.json` contains:
   - `"publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" }` (✅ already set in this template)
-  - A correct `"repository"` field (GitHub HTTPS or git+https URL matching your repository name)
+  - A correct `"repository"` field (GitHub HTTPS or git+https URL **matching your repository name**)
   - A `"license"` field (e.g., `"MIT"`) (✅ already set, but you must choose yours)
 - Publish using GitHub Actions with OIDC and the `--provenance` flag (✅ already set)
 - Use npm CLI v9.6.0+ for publishing (✅ already set)
 - Set your `NPM_TOKEN` secret in the repo settings
-
-> If your repo is private, or your package is scoped/private, provenance will **not** be generated.
 
 ### Disabling Provenance
 
