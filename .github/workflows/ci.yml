@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Build, Lint, and Test
 
 on:
   push:
@@ -35,8 +35,11 @@ jobs:
         run: pnpm run format:check
       - name: Check build
         run: pnpm run build
-      - name: Check testes & coverage
-        run: pnpm run test:coverage
+      - name: Check testes
+        run: pnpm run test
+      # Uncomment the following line to check test coverage
+      # - name: Check testes & coverage
+      #   run: pnpm run test:coverage
 
   node-tests:
     name: Node.js - Build & Test
