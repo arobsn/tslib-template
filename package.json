@@ -19,12 +19,14 @@
   "scripts": {
     "build": "tsdown",
     "build:watch": "tsdown --watch",
-    "check": "biome check",
-    "fix": "biome check --write",
+    "format:check": "biome check --linter-enabled=false",
+    "format:fix": "biome check --linter-enabled=false --write",
+    "lint:check": "biome lint",
+    "lint:fix": "biome lint --write",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "coverage": "vitest --run --coverage",
-    "coverage:json": "vitest --run --coverage --reporter=json"
+    "test:coverage": "vitest --run --coverage",
+    "test:coverage:json": "vitest --run --coverage --reporter=json"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
