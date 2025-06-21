@@ -1,0 +1,49 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Publish Package
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+# on:
+#   release:
+#     types: [created]
+
+jobs:
+  test-and-npm-publish:
+    name: Build, Test & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile && \
+          npm install -g npm@latest # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
+      - name: Build
+        run: pnpm run build
+      - name: Test
+        run: pnpm run test
+      # - name: Publish [beta]
+      # if: github.event.release.prerelease == true
+      # run: npm publish --tag beta --provenance
+      # env:
+      # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish
+        # if: github.event.release.prerelease == false
+        run: npm publish --provenance --tag alpha --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
