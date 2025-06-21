@@ -10,7 +10,7 @@ This is my personal template, crafted to kickstart TypeScript libraries with bes
 - 🔬 [**Vitest**](https://vitest.dev/) — Next-gen blazing fast unit testing
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
 - 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
-- 📦 [**Auto NPM publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
+- 📦 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
 
 ## 🛠️ Getting Started
 
@@ -63,6 +63,6 @@ Export your main API from `src/index.ts`.
 
 ## 📝 Publish Your Library
 
-- 1. Update `publishConfig` & `repository` in `package.json`
-- 2. Ensure `NPM_TOKEN` is set in repository secrets
-- 3. Create a release on GitHub to trigger publish workflow
+1. Update `publishConfig` & `repository` in [`package.json`](package.json)
+2. Ensure `NPM_TOKEN` is set in [repository secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
+3. [Create a release on GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to trigger publish workflow
