@@ -1,17 +1,11 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
-name: Publish Package
+name: Publish
 
 on:
-  push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
-
-# on:
-#   release:
-#     types: [created]
+  release:
+    types: [created]
 
 jobs:
   test-and-npm-publish:
@@ -33,19 +27,23 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Update npm # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
-        run: npm install -g npm@latest
+      - name: Update npm
+        run: npm install -g npm@latest # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
       - name: Build
         run: pnpm run build
       - name: Test
         run: pnpm run test
-      # - name: Publish [beta]
-      # if: github.event.release.prerelease == true
-      # run: npm publish --tag beta --provenance
-      # env:
-      # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # if the release is not a pre-release, publish to npm as latest
       - name: Publish
-        # if: github.event.release.prerelease == false
-        run: npm publish --provenance --tag alpha
+        if: github.event.release.prerelease == false
+        run: npm publish --provenance # remove the --provenance flag if you don't want to use npm provenance, or having issues with it
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # if the release is a pre-release, publish to npm using the beta tag
+      - name: Publish [beta]
+        if: github.event.release.prerelease == true
+        run: npm publish --tag beta --provenance # remove the --provenance flag if you don't want to use npm provenance, or having issues with it
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
