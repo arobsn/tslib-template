@@ -34,12 +34,15 @@ jobs:
       - name: Check code style
         run: pnpm run format:check
 
-  node-build:
+  node-tests:
+    name: Node.js Build & Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18, 20, 22]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -52,6 +55,34 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run build
+      - name: Test
+        run: pnpm test
+
+  bun-tests:
+    name: Bun Build & Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        bun-version: [1]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Use Bun ${{ matrix.bun-version }}
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ matrix.bun-version }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
