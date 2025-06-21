@@ -1,13 +1,14 @@
 # tslib-template
 
-A **modern, minimal, runtime-agnostic TypeScript library template** —  
-This is my personal template, crafted to kickstart TypeScript libraries with best-in-class tooling, reproducible builds, and a focus on developer experience.
+**A modern, minimal, runtime-agnostic TypeScript library template**
+
+This is my personal template, crafted to kickstart TypeScript libraries with best-in-class tooling, continuos integration, and a focus on developer experience.
 
 ## 🚀 Features
 
-- ⚡ [**tsdown**](https://tsdown.dev/) — Fast TypeScript build system with modern output
-- 🧹 [**Biome**](https://biomejs.dev/) — Blazing fast code formatter & linter
-- 🔬 [**Vitest**](https://vitest.dev/) — Next-gen blazing fast unit testing
+- ⚡ [**tsdown**](https://tsdown.dev/) — Super fast TypeScript build system with modern output
+- 🧹 [**Biome**](https://biomejs.dev/) — Next-gen and fast code formatter & linter
+- 🔬 [**Vitest**](https://vitest.dev/) — Next-gen unit testing framework
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
 - 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
 - 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
@@ -37,8 +38,8 @@ pnpm install
 
 ## 4. Publish Your Library
 
-1. Make sure that `publishConfig` & `repository` are updated in [`package.json`](package.json)
-2. Ensure `NPM_TOKEN` is set in [repository secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
+1. Make sure that `publishConfig` & `repository` are set accordingly in [`package.json`](package.json)
+2. Ensure `NPM_TOKEN` is set in repository secrets (see instruction on [how to create an `Automation` npm token](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) and [how to set it as a repository secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository))
 3. [Create a release on GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to trigger publish workflow
 
 ## 🧪 Scripts
