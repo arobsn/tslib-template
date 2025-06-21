@@ -7,12 +7,12 @@ on:
     branches: ["master"]
 
 concurrency:
-  group: node-ci-${{ github.event.pull_request.number || github.ref }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  check:
-    name: Check linting & code style
+  check: # this job does all tests so it can fail fast and cancel other jobs
+    name: Check linting, code style, build, and unit test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -33,16 +33,21 @@ jobs:
         run: pnpm run lint:check
       - name: Check code style
         run: pnpm run format:check
+      - name: Check build
+        run: pnpm run build
+      - name: Check testes & coverage
+        run: pnpm run test:coverage:text
 
   node-tests:
     name: Node.js - Build & Test
     runs-on: ubuntu-latest
+    if: success()
     permissions:
       contents: read
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18.x, 20.x] # 22.x is already tested in the check job
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -60,19 +65,19 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run build
-      - name: Test
+      - name: Unit test
         run: pnpm test
 
   bun-tests:
     name: Bun - Build & Test
     runs-on: ubuntu-latest
+    if: success()
     permissions:
       contents: read
 
     strategy:
       matrix:
         bun-version: [latest]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v4
