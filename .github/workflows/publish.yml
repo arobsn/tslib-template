@@ -31,7 +31,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile && \
+        run: pnpm install --frozen-lockfile
       - name: Update npm # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
         run: npm install -g npm@latest
       - name: Build
