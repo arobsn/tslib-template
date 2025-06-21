@@ -35,14 +35,14 @@ jobs:
         run: pnpm run format:check
 
   node-tests:
-    name: Node.js Build & Test
+    name: Node.js - Build & Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     strategy:
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -64,14 +64,14 @@ jobs:
         run: pnpm test
 
   bun-tests:
-    name: Bun Build & Test
+    name: Bun - Build & Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     strategy:
       matrix:
-        bun-version: [1]
+        bun-version: [latest]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
