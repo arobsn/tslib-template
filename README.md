@@ -4,16 +4,16 @@
 
 This is my personal template, crafted to kickstart TypeScript libraries with best-in-class tooling, continuos integration, and a focus on developer experience.
 
-## 🚀 Features
+## Features
 
 - ⚡ [**tsdown**](https://tsdown.dev/) — Super fast TypeScript build system with modern output
 - 🧹 [**Biome**](https://biomejs.dev/) — Next-gen and fast code formatter & linter
 - 🔬 [**Vitest**](https://vitest.dev/) — Next-gen unit testing framework
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
 - 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
-- 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
+- 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [npm provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Use This Template
 
@@ -42,7 +42,7 @@ pnpm install
 2. Ensure `NPM_TOKEN` is set in repository secrets (see instruction on [how to create an `Automation` npm token](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) and [how to set it as a repository secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository))
 3. [Create a release on GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to trigger publish workflow
 
-## 🧪 Scripts
+## Scripts
 
 | Script               | Description                    |
 | -------------------- | ------------------------------ |
@@ -56,14 +56,16 @@ pnpm install
 | `pnpm test:watch`    | Watch mode for tests           |
 | `pnpm test:coverage` | Test with coverage report      |
 
-## 🤖 Continuous Integration
+## Continuous Integration
 
-- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) - Tests all pushes/PRs on Node.js & Bun
-- [`.github/workflows/publish.yml`](.github/workflows/publish.yml) - Publishes the package to NPM every time a new Github release is created
+| Script                                                           | Description                                                               |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml)           | Test all pushes/PRs on Node.js & Bun                                      |
+| [`.github/workflows/publish.yml`](.github/workflows/publish.yml) | Publish the package to the NPM every time a new Github release is created |
 
-## A note on Github/npm Provenance
+## A note on npm package Provenance
 
-This template supports [provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) for secure and transparent releases. **Provenance** allows users to verify that the published npm package was built from the source in your repository.
+This template supports [npm provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) for secure and transparent releases. **Provenance** allows users to verify that the published npm package was built from the source in your repository.
 
 **For provenance to work properly, you must:**
 
