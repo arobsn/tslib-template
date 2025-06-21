@@ -3,8 +3,6 @@
 A **modern, minimal, runtime-agnostic TypeScript library template** —  
 This is my personal template, crafted to kickstart TypeScript libraries with best-in-class tooling, reproducible builds, and a focus on developer experience.
 
----
-
 ## 🚀 Features
 
 - ⚡ [**tsdown**](https://tsdown.dev/) — Fast TypeScript build system with modern output
@@ -13,8 +11,6 @@ This is my personal template, crafted to kickstart TypeScript libraries with bes
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
 - 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
 - 📦 [**Auto NPM publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
-
----
 
 ## 🛠️ Getting Started
 
@@ -39,8 +35,6 @@ pnpm install
 Source files go in `src/`.  
 Export your main API from `src/index.ts`.
 
----
-
 ## 🧪 Scripts
 
 | Script               | Description                    |
@@ -55,8 +49,6 @@ Export your main API from `src/index.ts`.
 | `pnpm test:watch`    | Watch mode for tests           |
 | `pnpm test:coverage` | Test with coverage report      |
 
----
-
 ## 🧰 Tooling
 
 - **tsdown**: See [`tsdown.config.ts`](tsdown.config.ts)
@@ -64,36 +56,13 @@ Export your main API from `src/index.ts`.
 - **Vitest**: See [`vitest.config.ts`](vitest.config.ts)
 - **pnpm**: Lockfile & scripts, use `pnpm` for all commands
 
-VSCode users: Recommended extensions in [`.vscode/extensions.json`](.vscode/extensions.json)
-
----
-
 ## 🤖 Continuous Integration
 
-- GitHub Actions test all pushes/PRs on Node.js & Bun
-- Automated npm publishing via release workflow
-- See [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
-
----
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) - Tests all pushes/PRs on Node.js & Bun
+- [`.github/workflows/ci.yml`](.github/workflows/publish.yml) - Publishes the package to NPM every time a new Github release is created
 
 ## 📝 Publish Your Library
 
-- Update `publishConfig` & `repository` in `package.json`
-- Create a release on GitHub to trigger publish workflow
-- Ensure `NPM_TOKEN` is set in repository secrets
-
----
-
-## 💡 Example Test
-
-```typescript
-// src/index.spec.ts
-import { describe, expect, it } from "vitest";
-import { hello } from "./index";
-
-describe("index", () => {
-  it("should say hello world", () => {
-    expect(hello).toBe("Hello world!");
-  });
-});
-```
+- 1. Update `publishConfig` & `repository` in `package.json`
+- 2. Ensure `NPM_TOKEN` is set in repository secrets
+- 3. Create a release on GitHub to trigger publish workflow
