@@ -32,7 +32,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile && \
-          pnpm install -g npm@latest # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
+      - name: Update npm # Ensure npm is up-to-date. Provenance requires v9.6.0 or higher.
+        run: npm install -g npm@latest
       - name: Build
         run: pnpm run build
       - name: Test
