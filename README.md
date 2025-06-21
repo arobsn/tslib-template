@@ -10,8 +10,8 @@ This is my personal template, crafted to kickstart TypeScript libraries with bes
 - 🧹 [**Biome**](https://biomejs.dev/) — Next-gen and fast code formatter & linter
 - 🔬 [**Vitest**](https://vitest.dev/) — Next-gen unit testing framework
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
-- 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
-- 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [npm provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
+- 🛡️ [**CI**](#continuous-integration) — Automated build and tests for Node.js & Bun
+- 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [npm provenance](#npm-provenance) support
 
 ## Getting Started
 
