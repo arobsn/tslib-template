@@ -60,3 +60,25 @@ pnpm install
 
 - [`.github/workflows/ci.yml`](.github/workflows/ci.yml) - Tests all pushes/PRs on Node.js & Bun
 - [`.github/workflows/publish.yml`](.github/workflows/publish.yml) - Publishes the package to NPM every time a new Github release is created
+
+## A note on Github/npm Provenance
+
+This template supports [provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) for secure and transparent releases. **Provenance** allows users to verify that the published npm package was built from the source in your repository.
+
+**For provenance to work properly, you must:**
+
+- Use a **public GitHub repository** (provenance only works for public repos)
+- Ensure your `package.json` contains:
+  - `"publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" }` (✅ already set in this template)
+  - A correct `"repository"` field (GitHub HTTPS or git+https URL matching your repository name)
+  - A `"license"` field (e.g., `"MIT"`)
+- Publish using GitHub Actions with OIDC and the `--provenance` flag (✅ already set in this template)
+- Use npm CLI v9.6.0+ for publishing (✅ already set in this template)
+- Set your `NPM_TOKEN` secret in the repo settings
+
+> If your repo is private, or your package is scoped/private, provenance will **not** be generated.
+
+See more:
+
+- [npm Provenance Docs](https://docs.npmjs.com/generating-provenance-statements)
+- [GitHub Actions for npm provenance](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-with-provenance)
