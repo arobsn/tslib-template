@@ -4,7 +4,7 @@
 - [x] Biome
 - [x] pnpm
 - [x] Vitest
-- [ ] CI
-  - [ ] Node
-  - [ ] Bun
-  - [ ] Release with provenance
+- [x] CI
+  - [x] Node
+  - [x] Bun
+  - [x] Release with provenance

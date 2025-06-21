@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check: # this job does all tests so it can fail fast and cancel other jobs
+    name: Fail Fast - Check Code Style, Lint, Build & Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check linting
+        run: pnpm run lint:check
+      - name: Check code style
+        run: pnpm run format:check
+      - name: Check build
+        run: pnpm run build
+      - name: Check testes
+        run: pnpm run test
+      # Uncomment the following line to check test coverage
+      # - name: Check testes & coverage
+      #   run: pnpm run test:coverage
+
+  node-tests:
+    name: Node.js - Build & Test
+    runs-on: ubuntu-latest
+    needs: check
+    if: success()
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x] # 22.x is already tested in the check job
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run build
+      - name: Unit test
+        run: pnpm test
+
+  bun-tests:
+    name: Bun - Build & Test
+    runs-on: ubuntu-latest
+    needs: check
+    if: success()
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        bun-version: [latest]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Use Bun ${{ matrix.bun-version }}
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ matrix.bun-version }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run build
+      - name: Test
+        run: pnpm test

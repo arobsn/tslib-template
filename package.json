@@ -1,7 +1,12 @@
 {
   "name": "@arobsn/tslib-template",
+  "version": "0.0.1-alpha.1",
   "description": "A modern and minimal TypeScript library template",
   "author": "Alison Oliveira <arobsn@proton.me>",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "homepage": "https://github.com/arobsn/tslib-template#readme",
   "bugs": {
@@ -11,7 +16,6 @@
     "type": "git",
     "url": "git+https://github.com/arobsn/tslib-template.git"
   },
-  "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -19,16 +23,18 @@
   "scripts": {
     "build": "tsdown",
     "build:watch": "tsdown --watch",
-    "check": "biome check",
-    "fix": "biome check --write",
+    "format:check": "biome check --linter-enabled=false",
+    "format:fix": "biome check --linter-enabled=false --write",
+    "lint:check": "biome lint",
+    "lint:fix": "biome lint --write",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "coverage": "vitest --run --coverage",
-    "coverage:json": "vitest --run --coverage --reporter=json"
+    "test:coverage": "vitest --run --coverage",
+    "test:coverage:json": "vitest --run --coverage --reporter=json"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
-    "@types/bun": "latest",
+    "@biomejs/biome": "^2.0.4",
+    "@types/node": "^24.0.3",
     "@vitest/coverage-istanbul": "^3.2.4",
     "tsdown": "^0.12.8",
     "typescript": "^5.8.3",
