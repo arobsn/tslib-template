@@ -1,6 +1,6 @@
 {
   "name": "@arobsn/tslib-template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A modern and minimal TypeScript library template",
   "author": "Alison Oliveira <arobsn@proton.me>",
   "publishConfig": {
