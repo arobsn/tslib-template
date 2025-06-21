@@ -36,7 +36,7 @@ pnpm install
 - Source files go in `src/`.
 - Export your main API from `src/index.ts`.
 
-## 4. Publish Your Library
+### 4. Publish Your Library
 
 1. Make sure that `publishConfig` & `repository` are set accordingly in [`package.json`](package.json)
 2. Ensure `NPM_TOKEN` is set in repository secrets (see instruction on [how to create an `Automation` npm token](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) and [how to set it as a repository secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository))
@@ -71,14 +71,35 @@ This template supports [provenance](https://github.blog/security/supply-chain-se
 - Ensure your `package.json` contains:
   - `"publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" }` (✅ already set in this template)
   - A correct `"repository"` field (GitHub HTTPS or git+https URL matching your repository name)
-  - A `"license"` field (e.g., `"MIT"`)
-- Publish using GitHub Actions with OIDC and the `--provenance` flag (✅ already set in this template)
-- Use npm CLI v9.6.0+ for publishing (✅ already set in this template)
+  - A `"license"` field (e.g., `"MIT"`) (✅ already set, but you must choose yours)
+- Publish using GitHub Actions with OIDC and the `--provenance` flag (✅ already set)
+- Use npm CLI v9.6.0+ for publishing (✅ already set)
 - Set your `NPM_TOKEN` secret in the repo settings
 
 > If your repo is private, or your package is scoped/private, provenance will **not** be generated.
 
-See more:
+### Disabling Provenance
 
-- [npm Provenance Docs](https://docs.npmjs.com/generating-provenance-statements)
-- [GitHub Actions for npm provenance](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-with-provenance)
+If you do **not** want provenance statements when publishing to npm (e.g., if you encounter issues or your workflow doesn't require it), you can disable it:
+
+1. **Edit** [`.github/workflows/publish.yml`](.github/workflows/publish.yml)
+2. **Remove** the `--provenance` flag from both `npm publish` commands.
+
+```diff
+- run: npm publish --provenance
++ run: npm publish
+
+- run: npm publish --tag beta --provenance
++ run: npm publish --tag beta
+```
+
+3. Save and commit the changes.
+
+Without the `--provenance` flag, npm will not attempt to attach provenance statements to your package.
+
+### See more:
+
+- [[npm] Provenance Docs](https://docs.npmjs.com/generating-provenance-statements)
+- [[github] GitHub Actions for npm provenance](https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages)
+- [[npm] Creating and viewing access tokens](https://docs.npmjs.com/creating-and-viewing-access-tokens)
+- [[github] Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
