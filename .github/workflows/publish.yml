@@ -46,6 +46,6 @@ jobs:
       # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
         # if: github.event.release.prerelease == false
-        run: npm publish --provenance --tag alpha --access public
+        run: npm publish --provenance --tag alpha
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
