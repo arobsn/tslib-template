@@ -63,9 +63,11 @@ pnpm install
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml)           | Test all pushes/PRs on Node.js & Bun                                      |
 | [`.github/workflows/publish.yml`](.github/workflows/publish.yml) | Publish the package to the NPM every time a new Github release is created |
 
-## A note on npm package Provenance
+## NPM Provenance
 
 This template supports [npm provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) for secure and transparent releases. **Provenance** allows users to verify that the published npm package was built from the source in your repository.
+
+[<p align="center"><img width="771" alt="Screenshot 2025-06-21 at 16 36 25" src="https://github.com/user-attachments/assets/63286c78-f63d-4f22-ac1e-143737f36e26" /></p>](https://www.npmjs.com/package/@arobsn/tslib-template#provenance)
 
 **For provenance to work properly, you must:**
 
