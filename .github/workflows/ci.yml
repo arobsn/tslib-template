@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   check: # this job does all tests so it can fail fast and cancel other jobs
-    name: Check linting, code style, build, and unit test
+    name: Fail Fast - Check Code Style, Linting, Build & Test
     runs-on: ubuntu-latest
     permissions:
       contents: read

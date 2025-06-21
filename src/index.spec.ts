@@ -3,6 +3,6 @@ import { hello } from "./index";
 
 describe("index", () => {
   it("should say hello world", () => {
-    expect(hello).toBe("Hello world!s");
+    expect(hello).toBe("Hello bob!");
   });
 });
