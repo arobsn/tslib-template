@@ -1,4 +1,4 @@
-# 📦 tslib-template
+# tslib-template
 
 A **modern, minimal, runtime-agnostic TypeScript library template** —  
 This is my personal template, crafted to kickstart TypeScript libraries with best-in-class tooling, reproducible builds, and a focus on developer experience.
@@ -10,30 +10,36 @@ This is my personal template, crafted to kickstart TypeScript libraries with bes
 - 🔬 [**Vitest**](https://vitest.dev/) — Next-gen blazing fast unit testing
 - 📦 [**pnpm**](https://pnpm.io/) — Performant, disk-efficient package manager
 - 🛡️ [**CI**](https://docs.github.com/en/actions) — Automated build and tests for Node.js & Bun
-- 📦 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
+- 🚀 [**Auto publishing**](https://www.npmjs.com/) - Safe and automated releases with [Github provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) support
 
 ## 🛠️ Getting Started
 
 ### 1. Use This Template
 
-Click [**"Use this template"**](https://github.com/arobsn/tslib-template/generate)  
-or clone manually:
+- Click [**"Use this template"**](https://github.com/arobsn/tslib-template/generate)
+- or clone manually:
 
 ```sh
-git clone https://github.com/arobsn/tslib-template.git my-lib
-cd my-lib
+git clone https://github.com/arobsn/tslib-template.git your-lib-name
+cd your-lib-name
 pnpm install
 ```
 
 ### 2. Update Project Info
 
-- Edit `package.json` (`name`, `description`, `author`, etc.)
-- Update `LICENSE` and `README.md` as needed
+- Edit [`package.json`](package.json) (`name`, `description`, `author`, etc.)
+- Update [`LICENSE`](LICENSE) and [`README.md`](README.md) as needed
 
 ### 3. Start Coding
 
-Source files go in `src/`.  
-Export your main API from `src/index.ts`.
+- Source files go in `src/`.
+- Export your main API from `src/index.ts`.
+
+## 4. Publish Your Library
+
+1. Make sure that `publishConfig` & `repository` are updated in [`package.json`](package.json)
+2. Ensure `NPM_TOKEN` is set in [repository secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
+3. [Create a release on GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to trigger publish workflow
 
 ## 🧪 Scripts
 
@@ -49,20 +55,7 @@ Export your main API from `src/index.ts`.
 | `pnpm test:watch`    | Watch mode for tests           |
 | `pnpm test:coverage` | Test with coverage report      |
 
-## 🧰 Tooling
-
-- **tsdown**: See [`tsdown.config.ts`](tsdown.config.ts)
-- **Biome**: See [`biome.jsonc`](biome.jsonc)
-- **Vitest**: See [`vitest.config.ts`](vitest.config.ts)
-- **pnpm**: Lockfile & scripts, use `pnpm` for all commands
-
 ## 🤖 Continuous Integration
 
 - [`.github/workflows/ci.yml`](.github/workflows/ci.yml) - Tests all pushes/PRs on Node.js & Bun
-- [`.github/workflows/ci.yml`](.github/workflows/publish.yml) - Publishes the package to NPM every time a new Github release is created
-
-## 📝 Publish Your Library
-
-1. Update `publishConfig` & `repository` in [`package.json`](package.json)
-2. Ensure `NPM_TOKEN` is set in [repository secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
-3. [Create a release on GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to trigger publish workflow
+- [`.github/workflows/publish.yml`](.github/workflows/publish.yml) - Publishes the package to NPM every time a new Github release is created
