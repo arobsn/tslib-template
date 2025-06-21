@@ -67,7 +67,7 @@ pnpm install
 
 This template supports [npm provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/) for secure and transparent releases. **Provenance** allows users to verify that the published npm package was built from the source in your repository.
 
-[<p align="center"><img width="771" alt="Screenshot 2025-06-21 at 16 36 25" src="https://github.com/user-attachments/assets/63286c78-f63d-4f22-ac1e-143737f36e26" /></p>](https://www.npmjs.com/package/@arobsn/tslib-template#provenance)
+[<p align="center"><img width="771" alt="Provenance example" src="https://github.com/user-attachments/assets/63286c78-f63d-4f22-ac1e-143737f36e26" /></p>](https://www.npmjs.com/package/@arobsn/tslib-template#provenance)
 
 ### Requirements
 
@@ -97,7 +97,7 @@ If you do **not** want provenance statements when publishing to npm (e.g., if yo
 + run: npm publish --tag beta
 ```
 
-3. Save and commit the changes.
+3. **Save and commit** the changes.
 
 Without the `--provenance` flag, npm will not attempt to attach provenance statements to your package.
 
