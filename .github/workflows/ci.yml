@@ -1,4 +1,4 @@
-name: Build, Lint, and Test
+name: Check, Build & Test
 
 on:
   push:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   check: # this job does all tests so it can fail fast and cancel other jobs
-    name: Fail Fast - Check Code Style, Linting, Build & Test
+    name: Fail Fast - Check Code Style, Lint, Build & Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
