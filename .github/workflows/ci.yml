@@ -36,11 +36,12 @@ jobs:
       - name: Check build
         run: pnpm run build
       - name: Check testes & coverage
-        run: pnpm run test:coverage:text
+        run: pnpm run test:coverage
 
   node-tests:
     name: Node.js - Build & Test
     runs-on: ubuntu-latest
+    needs: check
     if: success()
     permissions:
       contents: read
@@ -71,6 +72,7 @@ jobs:
   bun-tests:
     name: Bun - Build & Test
     runs-on: ubuntu-latest
+    needs: check
     if: success()
     permissions:
       contents: read

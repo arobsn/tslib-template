@@ -26,8 +26,7 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
-    "test:coverage:json": "vitest --run --coverage --reporter=json",
-    "test:coverage:text": "vitest --run --coverage --reporter=text"
+    "test:coverage:json": "vitest --run --coverage --reporter=json"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
